@@ -9,11 +9,13 @@
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href=" {{asset('adminLTE/plugins/fontawesome-free/css/all.min.css')}} ">
+    <link rel="stylesheet" href="{{asset('adminLTE/plugins/fontawesome-free/css/all.min.css')}}">
     <!-- Theme style -->
-    <link rel="stylesheet" href=" {{asset('adminLTE/dist/css/adminlte.min.css')}} ">
+    <link rel="stylesheet" href="{{asset('adminLTE/dist/css/adminlte.min.css')}}">
     <!-- overlayScrollbars -->
-    <link rel="stylesheet" href=" {{asset('adminLTE/plugins/overlayScrollbars/css/OverlayScrollbars.min.css')}} ">
+    <link rel="stylesheet" href="{{asset('adminLTE/plugins/overlayScrollbars/css/OverlayScrollbars.min.css')}}">
+    <link rel="stylesheet" href="{{asset('adminLTE/plugins/summernote/summernote-bs4.min.css')}}">
+
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -140,7 +142,7 @@
                          with font-awesome or any other icon font library -->
 
                     <li class="nav-item">
-                        <a href="pages/calendar.html" class="nav-link">
+                        <a href="{{route('article.index')}}" class="nav-link">
                             <i class="nav-icon far fa-newspaper"></i>
                             <p>
                                 Новости
@@ -167,7 +169,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="pages/calendar.html" class="nav-link">
+                        <a href="{{route('user.index')}}" class="nav-link">
                             <i class="nav-icon fas fa-users"></i>
                             <p>
                                 Пользователи
@@ -209,11 +211,39 @@
     $.widget.bridge('uibutton', $.ui.button)
 </script>
 <!-- Bootstrap 4 -->
-<script src={{asset('adminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js')}} ""></script>
+<script src="{{asset('adminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 <!-- overlayScrollbars -->
-<script src={{asset('adminLTE/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}} ""></script>
+<script src="{{asset('adminLTE/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
+<script src="{{asset('adminLTE/plugins/summernote/summernote-bs4.min.js')}} "></script>
+<script src="{{asset('adminLTE/plugins/bs-custom-file-input/bs-custom-file-input.min.js')}}"></script>
 <!-- AdminLTE App -->
-<script src={{asset('adminLTE/dist/js/adminlte.js')}} ""></script>
+<script src="{{asset('adminLTE/dist/js/adminlte.js')}} "></script>
+
+<script>
+    $(document).ready(function () {
+        $('#summernote').summernote({
+            toolbar: [
+                ['style', ['bold', 'italic', 'underline', 'clear']],
+                ['color', ['color']],
+                ['para', ['style', 'ul', 'ol', 'paragraph']],
+                ['table', ['table']],
+                ['insert', ['link']],
+            ],
+            styleTags: [
+                'p',
+                'h4'
+            ],
+
+
+        });
+        $(function () {
+            bsCustomFileInput.init();
+        })
+        // TODO: Пофиксть пустое значение
+        $('#summernote').summernote('formatPara');
+    })
+
+</script>
 
 </body>
 </html>

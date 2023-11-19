@@ -40,6 +40,7 @@
                                     <th>Почта</th>
                                     <th>Возраст</th>
                                     <th>Пол</th>
+                                    <th>Роль</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -54,6 +55,7 @@
                                         <td>{{$user->email}}</td>
                                         <td>{{$user->age}}</td>
                                         <td>{{$user->genderTitle}}</td>
+                                        <td>{{$user->roleTitle}}</td>
                                     </tr>
                                 @endforeach
                                 </tbody>

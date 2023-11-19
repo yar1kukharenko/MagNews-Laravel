@@ -40,7 +40,7 @@
                             {{old('content',$article->content)}}
                         </textarea>
                         @error('content')
-                        <div class="text-danger">Это поле обязательно</div>
+                        <div class="text-danger">{{$message}}</div>
                         @enderror
                     </div>
                     <div class="form-group w-50">
@@ -58,7 +58,7 @@
                             </div>
                         </div>
                         @error('image')
-                        <div class="text-danger">Это поле обязательно</div>
+                        <div class="text-danger">{{$message}}</div>
                         @enderror
                     </div>
                     <div class="form-group w-50">
@@ -70,6 +70,9 @@
                                 </option>
                             @endforeach
                         </select>
+                        @error('category_id')
+                        <div class="text-danger">{{$message}}</div>
+                        @enderror
                     </div>
                     <div class="form-group">
                         <button class="btn btn-primary" type="submit">Редактировать</button>

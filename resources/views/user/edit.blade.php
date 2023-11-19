@@ -52,13 +52,35 @@
                                placeholder="Введите возраст">
                     </div>
                     <div class="form-group">
-                        <label class="form-label" for="age">Пол</label>
+                        <label class="form-label" for="gender">Пол</label>
                         <select name="gender" class="custom-select form-control" id="gender">
                             <option disabled selected>Выберите ваш пол</option>
                             <option {{$user->gender==1 || old('gender')== 1 ? 'selected' : ''}} value="1">Мужской
                             </option>
                             <option {{$user->gender==2 || old('gender')== 2 ? 'selected' : ''}} value="2">Женский
                             </option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="role_id">Пол</label>
+                        <select name="role" class="custom-select form-control" id="role_id">
+                            <option disabled selected>Выберите роль</option>
+                            @foreach($roles as $id=>$role)
+                                <option
+                                    {{$id == old('role_id') ? 'selected' : ''}} value="{{$id}}">{{$role}}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="role_id">Пол</label>
+                        <select name="role" class="custom-select form-control" id="role_id">
+                            <option disabled selected>Выберите роль</option>
+                            @foreach($roles as $id=>$role)
+                                <option
+                                    {{$id == $user->role ? 'selected' : ''}} value="{{$id}}">{{$role}}
+                                </option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="form-group">

@@ -54,10 +54,15 @@
                                placeholder="Введите пароль">
                     </div>
                     <div class="form-group">
-                        {{--                        <label class="form-label" for="password">Пароль</label>--}}
-                        <input class="form-control" value="{{old('password')}}" type="password"
+                        <label class="form-label" for="password_confirmation">Потдверждение пароля</label>
+                        <input id="password_confirmation" class="form-control" value="{{old('password')}}"
+                               type="password"
                                name="password_confirmation"/>
                     </div>
+                    @error('password')
+                    <div class="text-danger">{{$message}}</div>
+                    @enderror
+
                     <div class="form-group">
                         <label class="form-label" for="age">Возраст</label>
                         <input class="form-control" value="{{old('age')}}" type="number" name="age"
@@ -65,11 +70,22 @@
                                placeholder="Введите возраст">
                     </div>
                     <div class="form-group">
-                        <label class="form-label" for="age">Пол</label>
+                        <label class="form-label" for="gender">Пол</label>
                         <select name="gender" class="custom-select form-control" id="gender">
                             <option disabled selected>Выберите ваш пол</option>
                             <option {{old('gender')== 1 ? 'selected' : ''}} value="1">Мужской</option>
                             <option {{old('gender')== 2 ? 'selected' : ''}} value="2">Женский</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="role_id">Пол</label>
+                        <select name="role" class="custom-select form-control" id="role_id">
+                            <option disabled selected>Выберите роль</option>
+                            @foreach($roles as $id=>$role)
+                                <option
+                                    {{$id == old('role_id') ? 'selected' : ''}} value="{{$id}}">{{$role}}
+                                </option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="form-group">

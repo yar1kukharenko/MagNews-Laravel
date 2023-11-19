@@ -2,18 +2,14 @@
 
 namespace App\Http\Controllers\Article;
 
-use App\Http\Controllers\Controller;
 use App\Http\Requests\Article\StoreRequest;
-use App\Models\Article;
-use Illuminate\Support\Facades\Storage;
 
-class StoreController extends Controller
+class StoreController extends BaseController
 {
     public function __invoke(StoreRequest $request)
     {
         $data = $request->validated();
-        $data['image'] = Storage::disk('public')->put('/images', $data['image']);
-        Article::firstOrCreate($data);
+        $this->service->store($data);
         return redirect()->route('article.index');
     }
 }

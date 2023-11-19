@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers\Article;
 
-use App\Http\Controllers\Controller;
 use App\Models\Article;
 
-class DeleteController extends Controller
+class DeleteController extends BaseController
 {
     public function __invoke(Article $article)
     {

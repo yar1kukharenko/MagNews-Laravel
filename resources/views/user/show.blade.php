@@ -82,6 +82,12 @@
                                         {{$user->genderTitle}}
                                     </td>
                                 </tr>
+                                <tr>
+                                    <td>Роль</td>
+                                    <td>
+                                        {{$user->roleTitle}}
+                                    </td>
+                                </tr>
 
                                 </tbody>
                             </table>

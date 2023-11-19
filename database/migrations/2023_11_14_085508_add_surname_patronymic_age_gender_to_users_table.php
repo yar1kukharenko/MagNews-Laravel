@@ -24,10 +24,10 @@ return new class extends Migration {
     public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('surname');
-            $table->dropColumn('patronymic');
-            $table->dropColumn('age');
-            $table->dropColumn('gender');
+            $table->dropIfExists('surname');
+            $table->dropIfExists('patronymic');
+            $table->dropIfExists('age');
+            $table->dropIfExists('gender');
 
         });
     }

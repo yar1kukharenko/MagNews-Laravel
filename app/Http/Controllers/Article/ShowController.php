@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers\Article;
 
-use App\Http\Controllers\Controller;
 use App\Models\Article;
 
-class ShowController extends Controller
+class ShowController extends BaseController
 {
     public function __invoke(Article $article)
     {

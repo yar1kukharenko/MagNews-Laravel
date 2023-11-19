@@ -4,16 +4,19 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, SoftDeletes;
 
     const GENDER_MALE = 1;
     const GENDER_FEMALE = 2;
+    const ROLE_ADMIN = 0;
+    const ROLE_READER = 1;
     protected $table = 'users';
     protected $guarded = false;
     /**
@@ -29,6 +32,7 @@ class User extends Authenticatable
         'gender',
         'email',
         'password',
+        'role',
     ];
     /**
      * The attributes that should be hidden for serialization.
@@ -59,6 +63,19 @@ class User extends Authenticatable
         return [
             self::GENDER_MALE => 'Мужской',
             self::GENDER_FEMALE => 'Женский'
+        ];
+    }
+
+    public function getRoleTitleAttribute()
+    {
+        return self::getRole()[$this->role];
+    }
+
+    static function getRole()
+    {
+        return [
+            self::ROLE_ADMIN => 'Админ',
+            self::ROLE_READER => 'Читатель'
         ];
     }
 

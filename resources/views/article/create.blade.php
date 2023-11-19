@@ -31,7 +31,7 @@
                         <input class="form-control" type="text" name="title" id="name" placeholder="Наименование"
                                value="{{old('title')}}">
                         @error('title')
-                        <div class="text-danger">Это поле обязательно</div>
+                        <div class="text-danger">{{$message}}</div>
                         @enderror
                     </div>
                     <div class="form-group">
@@ -39,7 +39,7 @@
                             {{old('content')}}
                         </textarea>
                         @error('content')
-                        <div class="text-danger">Это поле обязательно</div>
+                        <div class="text-danger">{{$message}}</div>
                         @enderror
                     </div>
                     <div class="form-group w-50">
@@ -54,7 +54,7 @@
                             </div>
                         </div>
                         @error('image')
-                        <div class="text-danger">Это поле обязательно</div>
+                        <div class="text-danger">{{$message}}</div>
                         @enderror
                     </div>
                     <div class="form-group w-50">

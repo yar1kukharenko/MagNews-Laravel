@@ -15,6 +15,7 @@ class ArticleService
             DB::beginTransaction();
             $data['image'] = Storage::disk('public')->put('/images', $data['image']);
             Article::firstOrCreate($data);
+
             DB::commit();
         } catch (Exception $exception) {
             DB::rollBack();
@@ -29,8 +30,8 @@ class ArticleService
             if ($request->hasFile('image')) {
                 Storage::disk('public')->delete($article->image);
                 $data['image'] = Storage::disk('public')->put('/images', $data['image']);
-                $article->update($data);
             }
+            $article->update($data);
             DB::commit();
         } catch (Exception $exception) {
             DB::rollBack();

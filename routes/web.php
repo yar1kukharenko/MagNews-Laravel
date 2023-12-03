@@ -7,6 +7,7 @@ use App\Http\Controllers\Category\IndexController;
 use App\Http\Controllers\Category\ShowController;
 use App\Http\Controllers\Category\StoreController;
 use App\Http\Controllers\Category\UpdateController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,8 +21,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//Route::group(['middleware' => ['auth', 'admin', 'verified']], function () {
 Route::get('/', \App\Http\Controllers\Main\IndexController::class)->name('main.index');
-
 Route::group(['prefix' => 'categories'], function () {
     Route::get('/', IndexController::class)->name('category.index');
     Route::get('/create', CreateController::class)->name('category.create');
@@ -61,3 +62,12 @@ Route::group(['prefix' => 'articles'], function () {
     Route::patch('/{article}', \App\Http\Controllers\Article\UpdateController::class)->name('article.update');
     Route::delete('/{article}', \App\Http\Controllers\Article\DeleteController::class)->name('article.delete');
 });
+
+
+//});
+
+Auth::routes();
+
+
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('verified');
+

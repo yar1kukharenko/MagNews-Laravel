@@ -28,14 +28,25 @@
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
         <!-- Left navbar links -->
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-            </li>
-        </ul>
+        <div class="col-12 d-flex justify-content-between">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+                </li>
+            </ul>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <form action="{{route('logout')}}" method="POST">
+                        @csrf
+                        <button class="btn btn-outline-primary" type="submit">Выйти</button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+
 
         <!-- Right navbar links -->
-        <ul class="navbar-nav ml-auto">
+        {{--<ul class="navbar-nav ml-auto">
             <!-- Messages Dropdown Menu -->
             <li class="nav-item dropdown">
                 <a class="nav-link" data-toggle="dropdown" href="#">
@@ -46,7 +57,7 @@
                     <a href="#" class="dropdown-item">
                         <!-- Message Start -->
                         <div class="media">
-                            {{--                            <img src="dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">--}}
+                            --}}{{--                            <img src="dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">--}}{{--
                             <div class="media-body">
                                 <h3 class="dropdown-item-title">
                                     Brad Diesel
@@ -62,7 +73,7 @@
                     <a href="#" class="dropdown-item">
                         <!-- Message Start -->
                         <div class="media">
-                            {{--                            <img src="dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">--}}
+                            --}}{{--                            <img src="dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">--}}{{--
                             <div class="media-body">
                                 <h3 class="dropdown-item-title">
                                     John Pierce
@@ -78,7 +89,7 @@
                     <a href="#" class="dropdown-item">
                         <!-- Message Start -->
                         <div class="media">
-                            {{--                            <img src="dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">--}}
+                            --}}{{--                            <img src="dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">--}}{{--
                             <div class="media-body">
                                 <h3 class="dropdown-item-title">
                                     Nora Silvester
@@ -121,7 +132,7 @@
                     <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
                 </div>
             </li>
-        </ul>
+        </ul>--}}
     </nav>
     <!-- /.navbar -->
 

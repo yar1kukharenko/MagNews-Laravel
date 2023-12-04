@@ -26,4 +26,9 @@ class Article extends Model
     {
         return url('storage/' . $this->image);
     }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class, 'article_id', 'id');
+    }
 }

@@ -23,7 +23,7 @@ class ListRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'categories' => 'nullable | array'
+            'category' => 'nullable|numeric',
         ];
     }
 }

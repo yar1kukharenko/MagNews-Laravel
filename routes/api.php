@@ -21,6 +21,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/articles', ListController::class);
+Route::get('/articles', ListController::class);
 Route::get('/articles/filters', FilterListController::class);
 Route::get('/articles/{article}', ShowController::class);

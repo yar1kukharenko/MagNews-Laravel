@@ -24,6 +24,8 @@ class ListRequest extends FormRequest
     {
         return [
             'category' => 'nullable|numeric',
+            'start' => 'nullable|numeric',
+            'end' => 'nullable|numeric'
         ];
     }
 }

@@ -13,11 +13,22 @@ class ListController extends Controller
     {
 
         $category_id = $request->query('category');
+        $start = $request->query('start');
+        $end = $request->query('end');
+
+        $query = Article::query();
         if ($category_id !== null) {
-            $articles = Article::where('category_id', $category_id)->get();
-        } else {
-            $articles = Article::all();
+            $query->where('category_id', $category_id);
         }
+        if ($start !== null && $end !== null) {
+            $query->whereBetween('id', [$start, $end]);
+
+        } elseif ($start !== null) {
+            $query->where('id', '>=', $start);
+        } elseif ($end !== null) {
+            $query->where('id', '<=', $end);
+        }
+        $articles = $query->get();
         return ArticleResource::collection($articles);
     }
 }

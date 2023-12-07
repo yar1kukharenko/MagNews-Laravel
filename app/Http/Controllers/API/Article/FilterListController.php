@@ -12,7 +12,7 @@ class FilterListController extends Controller
         $categories = Category::all();
 
         $result = [
-            'categories' => $categories
+            'data' => $categories
         ];
 
         return response()->json($result);

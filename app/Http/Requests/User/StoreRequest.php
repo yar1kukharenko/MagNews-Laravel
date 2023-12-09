@@ -27,7 +27,7 @@ class StoreRequest extends FormRequest
             'surname' => 'nullable|string',
             'patronymic' => 'nullable|string',
             'email' => 'required|string|unique:users,email',
-            'password' => 'required|between:8,255|confirmed', //TODO: Разобраться с потвержденем
+            'password' => 'required|between:8,255|confirmed',
             'age' => 'nullable|integer',
             'gender' => 'required|integer',
             'role' => 'required|integer'

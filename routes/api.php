@@ -22,12 +22,22 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/articles', ListController::class);
 
-Route::get('/articles/filters', FilterListController::class);
+Route::group(['prefix' => '/articles'], function () {
 
+    Route::get('/', ListController::class);
 
-Route::get('/articles/{article}', ShowController::class);
+    Route::get('/filters', FilterListController::class);
+
+    Route::get('/{article}', ShowController::class);
+
+    Route::group(['middleware' => 'jwt.auth'], function () {
+        Route::post('/{article}/comments', \App\Http\Controllers\API\Article\Comment\StoreController::class);
+    });
+
+    Route::get('/{article}/comments', \App\Http\Controllers\API\Article\Comment\ShowController::class);
+});
+
 
 Route::post('/register', StoreController::class);
 
@@ -40,8 +50,6 @@ Route::group([
     Route::post('logout', 'App\Http\Controllers\AuthController@logout');
     Route::post('refresh', 'App\Http\Controllers\AuthController@refresh');
     Route::post('me', 'App\Http\Controllers\AuthController@me');
-
-
 });
 
 

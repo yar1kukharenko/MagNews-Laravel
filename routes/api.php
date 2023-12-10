@@ -38,6 +38,8 @@ Route::group(['prefix' => '/articles'], function () {
     Route::get('/{article}/comments', \App\Http\Controllers\API\Article\Comment\ShowController::class);
 });
 
+Route::get('user/{user}', \App\Http\Controllers\API\User\ShowController::class);
+
 
 Route::post('/register', StoreController::class);
 

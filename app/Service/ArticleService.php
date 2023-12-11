@@ -2,6 +2,7 @@
 
 namespace App\Service;
 
+use App\Events\ArticleCreated;
 use App\Models\Article;
 use Exception;
 use Illuminate\Support\Facades\DB;
@@ -14,8 +15,8 @@ class ArticleService
         try {
             DB::beginTransaction();
             $data['image'] = Storage::disk('public')->put('/images', $data['image']);
-            Article::firstOrCreate($data);
-
+            $article = Article::firstOrCreate($data);
+            event(new ArticleCreated($article->id));
             DB::commit();
         } catch (Exception $exception) {
             DB::rollBack();

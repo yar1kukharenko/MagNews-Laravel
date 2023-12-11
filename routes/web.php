@@ -62,6 +62,17 @@ Route::group(['prefix' => 'articles'], function () {
     Route::patch('/{article}', \App\Http\Controllers\Article\UpdateController::class)->name('article.update');
     Route::delete('/{article}', \App\Http\Controllers\Article\DeleteController::class)->name('article.delete');
 });
+Route::group(['prefix' => 'comments'], function () {
+    Route::get('/', \App\Http\Controllers\Article\Comment\IndexController::class)->name('comment.index');
+    Route::get('/create', \App\Http\Controllers\Article\CreateController::class)->name('comment.create');
+    Route::post('/', \App\Http\Controllers\Article\StoreController::class)->name('comment.store');
+    Route::get('/{comment}/edit', \App\Http\Controllers\Article\EditController::class)->name('comment.edit');
+    Route::get('/{comment}', \App\Http\Controllers\Article\ShowController::class)->name('comment.show');
+    Route::post('/{comment}/approve', [\App\Http\Controllers\Article\Comment\IndexController::class, 'approve'])->name('comment.approve');
+    Route::post('/{comment}/reject', [\App\Http\Controllers\Article\Comment\IndexController::class, 'reject'])->name('comment.reject');
+    Route::patch('/{comment}', \App\Http\Controllers\Article\UpdateController::class)->name('comment.update');
+    Route::delete('/{comment}', \App\Http\Controllers\Article\DeleteController::class)->name('comment.delete');
+});
 
 
 //});

@@ -188,6 +188,15 @@
                             </p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{route('comment.index')}}" class="nav-link">
+                            <i class="nav-icon fas fa-users"></i>
+                            <p>
+                                Комментарии
+                                <span class="badge badge-info right">2</span>
+                            </p>
+                        </a>
+                    </li>
 
                 </ul>
             </nav>

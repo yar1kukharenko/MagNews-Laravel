@@ -33,15 +33,6 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
         Route::delete('/{category}', DeleteController::class)->name('category.delete');
     });
 
-    Route::group(['prefix' => 'tags'], function () {
-        Route::get('/', \App\Http\Controllers\Tag\IndexController::class)->name('tag.index');
-        Route::get('/create', \App\Http\Controllers\Tag\CreateController::class)->name('tag.create');
-        Route::post('/', \App\Http\Controllers\Tag\StoreController::class)->name('tag.store');
-        Route::get('/{tag}/edit', \App\Http\Controllers\Tag\EditController::class)->name('tag.edit');
-        Route::get('/{tag}', \App\Http\Controllers\Tag\ShowController::class)->name('tag.show');
-        Route::patch('/{tag}', \App\Http\Controllers\Tag\UpdateController::class)->name('tag.update');
-        Route::delete('/{tag}', \App\Http\Controllers\Tag\DeleteController::class)->name('tag.delete');
-    });
 
     Route::group(['prefix' => 'users'], function () {
         Route::get('/', \App\Http\Controllers\User\IndexController::class)->name('user.index');
@@ -64,14 +55,8 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
     });
     Route::group(['prefix' => 'comments'], function () {
         Route::get('/', \App\Http\Controllers\Article\Comment\IndexController::class)->name('comment.index');
-        Route::get('/create', \App\Http\Controllers\Article\CreateController::class)->name('comment.create');
-        Route::post('/', \App\Http\Controllers\Article\StoreController::class)->name('comment.store');
-        Route::get('/{comment}/edit', \App\Http\Controllers\Article\EditController::class)->name('comment.edit');
-        Route::get('/{comment}', \App\Http\Controllers\Article\ShowController::class)->name('comment.show');
         Route::post('/{comment}/approve', [\App\Http\Controllers\Article\Comment\IndexController::class, 'approve'])->name('comment.approve');
         Route::post('/{comment}/reject', [\App\Http\Controllers\Article\Comment\IndexController::class, 'reject'])->name('comment.reject');
-        Route::patch('/{comment}', \App\Http\Controllers\Article\UpdateController::class)->name('comment.update');
-        Route::delete('/{comment}', \App\Http\Controllers\Article\DeleteController::class)->name('comment.delete');
     });
 
 
@@ -80,5 +65,4 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
 Auth::routes();
 
 
-//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('verified');
 

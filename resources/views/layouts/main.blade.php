@@ -139,7 +139,7 @@
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
-        <a href="index3.html" class="brand-link">
+        <a href="/" class="brand-link">
             <span class="brand-text font-weight-light">MagNews</span>
         </a>
 
@@ -157,7 +157,7 @@
                             <i class="nav-icon far fa-newspaper"></i>
                             <p>
                                 Новости
-                                <span class="badge badge-info right">2</span>
+
                             </p>
                         </a>
                     </li>
@@ -166,25 +166,16 @@
                             <i class="nav-icon fas fa-list"></i>
                             <p>
                                 Категории
-                                <span class="badge badge-info right">2</span>
+
                             </p>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a href="{{route('tag.index')}}" class="nav-link">
-                            <i class="nav-icon fas fa-tags"></i>
-                            <p>
-                                Теги
-                                <span class="badge badge-info right">2</span>
-                            </p>
-                        </a>
-                    </li>
+                    
                     <li class="nav-item">
                         <a href="{{route('user.index')}}" class="nav-link">
                             <i class="nav-icon fas fa-users"></i>
                             <p>
                                 Пользователи
-                                <span class="badge badge-info right">2</span>
                             </p>
                         </a>
                     </li>
@@ -193,7 +184,6 @@
                             <i class="nav-icon fas fa-users"></i>
                             <p>
                                 Комментарии
-                                <span class="badge badge-info right">2</span>
                             </p>
                         </a>
                     </li>

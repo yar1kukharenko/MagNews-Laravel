@@ -20,14 +20,13 @@
 
     <!-- Main content -->
     <section class="content">
-        {{--                        TODO: Сделать так на всех формах--}}
         <div class="container-fluid">
             <!-- Small boxes (Stat box) -->
             <div class="row w-100">
                 <form class="w-100" action="{{route('article.store')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group w-50">
-                        <label class="form-label" for="name">Наименование категории</label>
+                        <label class="form-label" for="name">Наименование статьи</label>
                         <input class="form-control" type="text" name="title" id="name" placeholder="Наименование"
                                value="{{old('title')}}">
                         @error('title')

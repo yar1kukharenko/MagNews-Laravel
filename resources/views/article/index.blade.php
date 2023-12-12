@@ -26,7 +26,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <a href="{{route('article.create')}}" class="btn btn-primary">Добавить категорию</a>
+                            <a href="{{route('article.create')}}" class="btn btn-primary">Добавить статью</a>
                         </div>
 
                         <div class="card-body table-responsive p-0">

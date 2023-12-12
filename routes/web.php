@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(['middleware' => ['auth:web', 'admin']], function () {
+Route::group(['middleware' => ['auth', 'admin']], function () {
     Route::get('/', \App\Http\Controllers\Main\IndexController::class)->name('main.index');
     Route::group(['prefix' => 'categories'], function () {
         Route::get('/', IndexController::class)->name('category.index');

@@ -6,6 +6,7 @@ use App\Events\ArticleCreated;
 use App\Models\Article;
 use Exception;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 
 class ArticleService
@@ -20,6 +21,7 @@ class ArticleService
             DB::commit();
         } catch (Exception $exception) {
             DB::rollBack();
+            Log::error($exception->getMessage());
             abort(500);
         }
     }

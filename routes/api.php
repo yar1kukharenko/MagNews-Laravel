@@ -29,7 +29,7 @@ Route::group(['prefix' => '/articles'], function () {
 
     Route::get('/filters', FilterListController::class);
 
-    Route::get('/{article}', ShowController::class);
+    Route::get('/{article}', ShowController::class)->name('articleApi.show')->middleware('trackArticleViews');
 
     Route::group(['middleware' => 'jwt.auth'], function () {
         Route::post('/{article}/comments', \App\Http\Controllers\API\Article\Comment\StoreController::class);
@@ -42,17 +42,6 @@ Route::get('user/{user}', \App\Http\Controllers\API\User\ShowController::class);
 
 
 Route::post('/register', StoreController::class);
-
-//Route::group([
-//    'middleware' => 'jwt.auth',
-//    'prefix' => 'auth'
-//], function ($router) {
-//
-//    Route::post('login', 'App\Http\Controllers\AuthController@login');
-//    Route::post('logout', 'App\Http\Controllers\AuthController@logout');
-//    Route::post('refresh', 'App\Http\Controllers\AuthController@refresh');
-//    Route::post('me', 'App\Http\Controllers\AuthController@me');
-//});
 
 Route::group([
     'middleware' => 'api',

@@ -7,6 +7,7 @@ use App\Http\Middleware\Authenticate;
 use App\Http\Middleware\EncryptCookies;
 use App\Http\Middleware\PreventRequestsDuringMaintenance;
 use App\Http\Middleware\RedirectIfAuthenticated;
+use App\Http\Middleware\TrackArticleViews;
 use App\Http\Middleware\TrimStrings;
 use App\Http\Middleware\TrustProxies;
 use App\Http\Middleware\ValidateSignature;
@@ -77,6 +78,7 @@ class Kernel extends HttpKernel
      * @var array<string, class-string|string>
      */
     protected $middlewareAliases = [
+        'trackArticleViews' => TrackArticleViews::class,
         'auth' => Authenticate::class,
         'auth.basic' => AuthenticateWithBasicAuth::class,
         'auth.session' => AuthenticateSession::class,
